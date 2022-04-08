@@ -11,6 +11,9 @@
 		61BC60C3280061620024F9E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BC60C2280061620024F9E2 /* ContentView.swift */; };
 		61BC60C5280061630024F9E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61BC60C4280061630024F9E2 /* Assets.xcassets */; };
 		61BC60C8280061630024F9E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61BC60C7280061630024F9E2 /* Preview Assets.xcassets */; };
+		61BC60D2280066030024F9E2 /* LocalizationTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BC60D1280066030024F9E2 /* LocalizationTable.swift */; };
+		61BC60D5280066680024F9E2 /* LocalizationTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BC60D4280066680024F9E2 /* LocalizationTableViewModel.swift */; };
+		61BC60DA28007FC20024F9E2 /* valueCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BC60D928007FC20024F9E2 /* valueCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		61BC60C4280061630024F9E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61BC60C7280061630024F9E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		61BC60C9280061630024F9E2 /* LocalizationManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocalizationManager.entitlements; sourceTree = "<group>"; };
+		61BC60D1280066030024F9E2 /* LocalizationTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTable.swift; sourceTree = "<group>"; };
+		61BC60D4280066680024F9E2 /* LocalizationTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTableViewModel.swift; sourceTree = "<group>"; };
+		61BC60D928007FC20024F9E2 /* valueCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = valueCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				61BC60C0280061620024F9E2 /* LocalizationManagerApp.swift */,
-				61BC60C2280061620024F9E2 /* ContentView.swift */,
+				61BC60D3280066540024F9E2 /* ProjectSelector */,
+				61BC60D62800666C0024F9E2 /* LocalizationTable */,
 				61BC60C4280061630024F9E2 /* Assets.xcassets */,
 				61BC60C9280061630024F9E2 /* LocalizationManager.entitlements */,
 				61BC60C6280061630024F9E2 /* Preview Content */,
@@ -67,6 +74,24 @@
 				61BC60C7280061630024F9E2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		61BC60D3280066540024F9E2 /* ProjectSelector */ = {
+			isa = PBXGroup;
+			children = (
+				61BC60C2280061620024F9E2 /* ContentView.swift */,
+			);
+			path = ProjectSelector;
+			sourceTree = "<group>";
+		};
+		61BC60D62800666C0024F9E2 /* LocalizationTable */ = {
+			isa = PBXGroup;
+			children = (
+				61BC60D1280066030024F9E2 /* LocalizationTable.swift */,
+				61BC60D928007FC20024F9E2 /* valueCellView.swift */,
+				61BC60D4280066680024F9E2 /* LocalizationTableViewModel.swift */,
+			);
+			path = LocalizationTable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,7 +165,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				61BC60C3280061620024F9E2 /* ContentView.swift in Sources */,
+				61BC60DA28007FC20024F9E2 /* valueCellView.swift in Sources */,
 				61BC60C1280061620024F9E2 /* LocalizationManagerApp.swift in Sources */,
+				61BC60D2280066030024F9E2 /* LocalizationTable.swift in Sources */,
+				61BC60D5280066680024F9E2 /* LocalizationTableViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
