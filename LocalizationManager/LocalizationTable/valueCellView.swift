@@ -20,7 +20,10 @@ struct valueCellView: View {
         VStack{
             Text(value)
                 .onTapGesture {
-                    showingTextField.toggle()
+                    withAnimation {
+                        showingTextField.toggle()
+                    }
+                    
                 }
             if showingTextField{
                 HStack{
@@ -41,7 +44,9 @@ struct valueCellView: View {
             .foregroundColor(.white)
             .frame(width: widthConst, height: heightConst)
             .background(Color.black.onTapGesture {
-                showingTextField.toggle()
+                withAnimation {
+                    showingTextField.toggle()
+                }
             })
             .border(Color.gray, width: 1)
         

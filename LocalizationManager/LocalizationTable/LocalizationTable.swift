@@ -20,6 +20,7 @@ struct LocalizationTable: View {
                     TextField("Новый ключ", text: $vm.newKey)
                     Button {
                         vm.add()
+                        vm.searchKey = vm.newKey
                     } label: {
                         Image(systemName: "plus.app")
                             .resizable()
@@ -66,6 +67,7 @@ struct LocalizationTable: View {
                                     .frame(width: widthConst, height: heightConst)
                                     .border(Color.gray, width: 1)
                             }
+                            .background(key == vm.searchKey ? Color.orange : Color.clear)
                         }
                     }
                 }

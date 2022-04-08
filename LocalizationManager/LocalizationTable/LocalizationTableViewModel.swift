@@ -19,6 +19,7 @@ class LocalizationTableViewModel: ObservableObject{
     @Published var localizations: [String] = []
     @Published var values: [val] = []
     @Published var newKey = ""
+    @Published var searchKey = ""
     init(_ pathURL: String){
         self.path = pathURL
         getLocalizations()
@@ -37,7 +38,7 @@ class LocalizationTableViewModel: ObservableObject{
                 for line in lines{
                     let doubleLine = line.components(separatedBy: " = ")
                     if let first = doubleLine.first?.replacingOccurrences(of: "\"", with: ""),
-                        let last = doubleLine.last?.replacingOccurrences(of: "\"", with: ""){
+                       let last = doubleLine.last?.replacingOccurrences(of: "\"", with: ""){
                         dict[first] = last.replacingOccurrences(of: ";", with: "")
                     }
                     
@@ -62,30 +63,39 @@ class LocalizationTableViewModel: ObservableObject{
         for value in values {
             let filePath = "\(path)/\(value.local)/Localizable.strings"
             //writing
-                do {
-                    var text = ""
-                    for (key, tex) in value.values{
-                        let line = "\"\(key)\" = \"\(tex)\";\n"
-                        text.append(line)
-                    }
-                    try text.write(toFile: filePath, atomically: false, encoding: .utf8)
+            do {
+                var text = ""
+                for (key, tex) in value.values{
+                    let line = "\"\(key)\" = \"\(tex)\";\n"
+                    text.append(line)
                 }
-                catch {/* error handling here */}
+                try text.write(toFile: filePath, atomically: false, encoding: .utf8)
+            }
+            catch {/* error handling here */}
         }
         
     }
     
     func add(){
-        for ind in 0..<values.count{
-            values[ind].values[newKey] = newKey
+        withAnimation {
+            for ind in 0..<values.count{
+                if values[ind].values[newKey] == nil || newKey != ""{
+                values[ind].values[newKey] = newKey
+                }else{
+                    return
+                }
+            }
         }
         saveFiles()
     }
     
     func remove(_ key: String){
-        for ind in 0..<values.count{
-            values[ind].values.removeValue(forKey: key)
+        withAnimation {
+            for ind in 0..<values.count{
+                values[ind].values.removeValue(forKey: key)
+            }
         }
+        
         saveFiles()
     }
     
