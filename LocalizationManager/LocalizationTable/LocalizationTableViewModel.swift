@@ -80,7 +80,7 @@ class LocalizationTableViewModel: ObservableObject{
         withAnimation {
             for ind in 0..<values.count{
                 if values[ind].values[newKey] == nil || newKey != ""{
-                values[ind].values[newKey] = newKey
+                    values[ind].values[newKey] = newKey
                 }else{
                     return
                 }
