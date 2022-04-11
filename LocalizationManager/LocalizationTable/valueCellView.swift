@@ -29,7 +29,7 @@ struct valueCellView: View {
                     Image(systemName: "pencil.circle")
                         .resizable()
                         .scaledToFit()
-                        .foregroundColor(.lightCoral)
+                        .foregroundColor(.white)
                 }
                 .buttonStyle(.plain)
                 .frame(width: 20, height: 20)

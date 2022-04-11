@@ -9,11 +9,11 @@ import SwiftUI
 
 
 struct LocalizationTable_Previews: PreviewProvider {
- 
+    
     static var previews: some View {
         LocalizationTable("test")
-     }
- }
+    }
+}
 
 
 struct LocalizationTable: View {
@@ -23,47 +23,52 @@ struct LocalizationTable: View {
     }
     var body: some View {
         VStack{
-        HStack{
-            TextField("Новый ключ", text: $vm.newKey)
-                .frame(width: 150, height: 40)
-                .textFieldStyle(.roundedBorder)
-                .padding()
-            Button {
-                vm.add()
-                vm.searchKey = vm.newKey
-            } label: {
-                Image(systemName: "plus.app")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(.lightCoral)
-            }
-            .buttonStyle(.plain)
-            .frame(width: 40, height: 40)
-            Spacer()
-        }
-        VStack(spacing: 0){
-            HStack(spacing: 0){
-                VStack{
-                    Text("key").bold()
+            HStack{
+                HStack{
+                    TextField("Новый ключ", text: $vm.newKey)
+                        .textFieldStyle(.plain)
+                    Button {
+                        vm.add()
+                        vm.searchKey = vm.newKey
+                    } label: {
+                        Image(systemName: "plus.app")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(.white)
+                    }
+                    .buttonStyle(.plain)
+                    .frame(width: 20, height: 20)
                 }
-                .padding(.horizontal)
-                .foregroundColor(Color.black)
+                .padding(8)
+                .frame(width: 200)
                 .background(Color.lightCoral)
-                .cornerRadius(15)
-                .background(Color.lightCoral.padding(.top, 10))
-                .frame(width: widthConst)
-                
-                ForEach(vm.values, id: \.self){item in
-                    Text(item.local).bold()
-                        .padding(.horizontal)
-                        .foregroundColor(Color.black)
-                        .background(Color.lightCoral)
-                        .cornerRadius(15)
-                        .background(Color.lightCoral.padding(.top, 10))
-                        .frame(width: widthConst)
-                }
+                .cornerRadius(10)
+                Spacer()
             }
-            ScrollView{
+            .padding(.bottom)
+            VStack(spacing: 0){
+                HStack(spacing: 0){
+                    VStack{
+                        Text("key").bold()
+                    }
+                    .padding(.horizontal)
+                    .foregroundColor(Color.white)
+                    .background(Color.lightCoral)
+                    .cornerRadius(15)
+                    .background(Color.lightCoral.padding(.top, 10))
+                    .frame(width: widthConst)
+                    
+                    ForEach(vm.values, id: \.self){item in
+                        Text(item.local).bold()
+                            .padding(.horizontal)
+                            .foregroundColor(Color.white)
+                            .background(Color.lightCoral)
+                            .cornerRadius(15)
+                            .background(Color.lightCoral.padding(.top, 10))
+                            .frame(width: widthConst)
+                    }
+                }
+                ScrollView{
                     HStack(spacing: 0){
                         VStack(spacing: 0){
                             if vm.values.first != nil{
@@ -79,12 +84,12 @@ struct LocalizationTable: View {
                                                     .foregroundColor(.red)
                                             }
                                             .buttonStyle(.plain)
-                                            .frame(width: 30, height: 30)
+                                            .frame(width: 20, height: 20)
                                             Spacer()
                                         }
                                         .padding(.horizontal)
                                         Text(key)
-                                            .foregroundColor(.black)
+                                            .foregroundColor(.white)
                                             .bold()
                                             .frame(width: widthConst, height: heightConst)
                                     }
@@ -105,11 +110,11 @@ struct LocalizationTable: View {
                             }
                         }
                     }
-                
+                    
+                    .cornerRadius(15)
+                }
                 .cornerRadius(15)
             }
-            .cornerRadius(15)
-        }
         }
         .padding()
     }

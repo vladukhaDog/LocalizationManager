@@ -13,12 +13,8 @@ struct ContentView: View {
     @AppStorage("lastPath") var projectPath: String = ""
     var body: some View {
         VStack{
+            
             HStack {
-                Text(projectPath)
-                    .bold()
-                    .frame(width: 200)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.black)
                 Button {
                     let panel = NSOpenPanel()
                     panel.allowsMultipleSelection = false
@@ -32,16 +28,24 @@ struct ContentView: View {
                         
                     }
                 } label: {
-                    Text("Выбрать папку с проектом")
+                    Text("Выбрать папку")
                         .bold()
                         .foregroundColor(.white)
-                        .padding()
-                        .background(Color.darkSeaGreen.blur(radius: 4))
-                        .cornerRadius(20)
+                        .padding(10)
+                        .frame(width: 200)
+                        .background(Color.darkSeaGreen)
+                        .cornerRadius(15)
     //                    .shadow(color: .black, radius: 5, x: 0, y: 0)
                 }
                 .buttonStyle(.plain)
+                Text(projectPath)
+                    .bold()
+                    .frame(width: 200)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.white)
+                Spacer()
             }
+            .padding(.horizontal)
             
 
             
@@ -52,7 +56,8 @@ struct ContentView: View {
                 }
             }
         }
-        .background(Color.darkSlateGreen.ignoresSafeArea())
+        .padding()
+//        .background(Color.darkSlateGreen.ignoresSafeArea())
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         
     }
