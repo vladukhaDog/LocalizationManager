@@ -13,5 +13,6 @@ extension Color{
     static let whiteSmoke = Color("white")
     static let lightSlateBlue = Color("lightSlateBlue")
     static let darkSlateBlue = Color("darkSlateBlue")
+    static let darkSlateBlueComp = Color("darkSlateBlueComp")
     static let dimGray = Color("dimGray")
 }

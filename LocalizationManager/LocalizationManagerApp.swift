@@ -9,7 +9,7 @@ import SwiftUI
 
 
 let widthConst: CGFloat = 300
-let heightConst: CGFloat = 60
+let heightConst: CGFloat = 80
 @main
 struct LocalizationManagerApp: App {
     var body: some Scene {

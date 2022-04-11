@@ -26,10 +26,12 @@ struct valueCellView: View {
                         showingTextField.toggle()
                     }
                 } label: {
-                    Image(systemName: "pencil.circle")
+                    Image(systemName: showingTextField ? "pencil.slash" : "pencil.circle")
+                        
                         .resizable()
                         .scaledToFit()
                         .foregroundColor(.white)
+                        .transition(.scale)
                 }
                 .buttonStyle(.plain)
                 .frame(width: 20, height: 20)
@@ -38,6 +40,7 @@ struct valueCellView: View {
             if showingTextField{
                 HStack{
                     TextField("новое значение", text: $newValue)
+                        .textFieldStyle(.plain)
                     Button {
                         if let index = values.firstIndex(where: {$0.local == item.local}){
                             values[index].values[key] = newValue
@@ -48,9 +51,16 @@ struct valueCellView: View {
                         }
                     } label: {
                         Text("Сохранить")
+                            .foregroundColor(.white)
+                            .padding(4)
+                            .background(Color.dimGray)
+                            .cornerRadius(5)
                     }
-                    
+                    .buttonStyle(.plain)
                 }
+                .padding(5)
+                .background(Color.darkSlateBlueComp)
+                .cornerRadius(5)
                 .padding(.horizontal)
             }
         }
