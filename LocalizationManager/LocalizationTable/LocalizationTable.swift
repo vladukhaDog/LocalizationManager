@@ -41,7 +41,7 @@ struct LocalizationTable: View {
                 }
                 .padding(8)
                 .frame(width: 200)
-                .background(Color.lightCoral)
+                .background(Color.dimGray)
                 .cornerRadius(10)
                 Spacer()
             }
@@ -53,18 +53,18 @@ struct LocalizationTable: View {
                     }
                     .padding(.horizontal)
                     .foregroundColor(Color.white)
-                    .background(Color.lightCoral)
+                    .background(Color.dimGray)
                     .cornerRadius(15)
-                    .background(Color.lightCoral.padding(.top, 10))
+                    .background(Color.dimGray.padding(.top, 10))
                     .frame(width: widthConst)
                     
                     ForEach(vm.values, id: \.self){item in
                         Text(item.local).bold()
                             .padding(.horizontal)
                             .foregroundColor(Color.white)
-                            .background(Color.lightCoral)
+                            .background(Color.dimGray)
                             .cornerRadius(15)
-                            .background(Color.lightCoral.padding(.top, 10))
+                            .background(Color.dimGray.padding(.top, 10))
                             .frame(width: widthConst)
                     }
                 }
@@ -93,7 +93,7 @@ struct LocalizationTable: View {
                                             .bold()
                                             .frame(width: widthConst, height: heightConst)
                                     }
-                                    .background(key == vm.searchKey ? Color.orange.padding(1) : Color.lightSeaGreen.padding(1))
+                                    .background(key == vm.searchKey ? Color.orange.padding(1) : Color.lightSlateBlue.padding(1))
                                     
                                 }
                             }

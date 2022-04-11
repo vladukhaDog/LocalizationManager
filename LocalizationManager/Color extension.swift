@@ -10,8 +10,8 @@ import SwiftUI
 
 extension Color{
     static let blueLight = Color("blue")
-    static let darkSlateGreen = Color("darkGreen")
-    static let lightSeaGreen = Color("lightGreen")
-    static let darkSeaGreen = Color("mediumGreen")
-    static let lightCoral = Color("pink")
+    static let whiteSmoke = Color("white")
+    static let lightSlateBlue = Color("lightSlateBlue")
+    static let darkSlateBlue = Color("darkSlateBlue")
+    static let dimGray = Color("dimGray")
 }

@@ -56,7 +56,7 @@ struct valueCellView: View {
         }
         .foregroundColor(.white)
         .frame(width: widthConst, height: heightConst)
-        .background(Color.darkSeaGreen.padding(1))
+        .background(Color.darkSlateBlue.padding(1))
         
     }
 }
