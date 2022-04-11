@@ -21,10 +21,16 @@ class LocalizationTableViewModel: ObservableObject{
     @Published var newKey = ""
     @Published var searchKey = ""
     init(_ pathURL: String){
-        self.path = pathURL
-        getLocalizations()
-        for loc in localizations{
-            getItems(loc)
+        if pathURL == "test"{
+            self.localizations = ["en", "ru"]
+            self.path = pathURL
+            self.values = [val(local: "en", values: ["kek": "kekk"])]
+        }else{
+            self.path = pathURL
+            getLocalizations()
+            for loc in localizations{
+                getItems(loc)
+            }
         }
     }
     private func getItems(_ localization: String){

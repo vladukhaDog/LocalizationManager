@@ -14,6 +14,7 @@
 		61BC60D2280066030024F9E2 /* LocalizationTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BC60D1280066030024F9E2 /* LocalizationTable.swift */; };
 		61BC60D5280066680024F9E2 /* LocalizationTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BC60D4280066680024F9E2 /* LocalizationTableViewModel.swift */; };
 		61BC60DA28007FC20024F9E2 /* valueCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BC60D928007FC20024F9E2 /* valueCellView.swift */; };
+		61EAEC0B280407B70095F0FB /* Color extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EAEC0A280407B70095F0FB /* Color extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		61BC60D1280066030024F9E2 /* LocalizationTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTable.swift; sourceTree = "<group>"; };
 		61BC60D4280066680024F9E2 /* LocalizationTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTableViewModel.swift; sourceTree = "<group>"; };
 		61BC60D928007FC20024F9E2 /* valueCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = valueCellView.swift; sourceTree = "<group>"; };
+		61EAEC0A280407B70095F0FB /* Color extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				61BC60D3280066540024F9E2 /* ProjectSelector */,
 				61BC60D62800666C0024F9E2 /* LocalizationTable */,
 				61BC60C4280061630024F9E2 /* Assets.xcassets */,
+				61EAEC0A280407B70095F0FB /* Color extension.swift */,
 				61BC60C9280061630024F9E2 /* LocalizationManager.entitlements */,
 				61BC60C6280061630024F9E2 /* Preview Content */,
 			);
@@ -88,8 +91,8 @@
 			isa = PBXGroup;
 			children = (
 				61BC60D1280066030024F9E2 /* LocalizationTable.swift */,
-				61BC60D928007FC20024F9E2 /* valueCellView.swift */,
 				61BC60D4280066680024F9E2 /* LocalizationTableViewModel.swift */,
+				61BC60D928007FC20024F9E2 /* valueCellView.swift */,
 			);
 			path = LocalizationTable;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			files = (
 				61BC60C3280061620024F9E2 /* ContentView.swift in Sources */,
 				61BC60DA28007FC20024F9E2 /* valueCellView.swift in Sources */,
+				61EAEC0B280407B70095F0FB /* Color extension.swift in Sources */,
 				61BC60C1280061620024F9E2 /* LocalizationManagerApp.swift in Sources */,
 				61BC60D2280066030024F9E2 /* LocalizationTable.swift in Sources */,
 				61BC60D5280066680024F9E2 /* LocalizationTableViewModel.swift in Sources */,
