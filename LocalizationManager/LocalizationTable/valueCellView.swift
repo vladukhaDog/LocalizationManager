@@ -38,7 +38,7 @@ struct valueCellView: View {
                             }
                             .onSubmit {
                                 if let index = values.firstIndex(where: {$0.local == item.local}){
-                                    values[index].values[key] = newValue
+                                    values[index][key] = newValue
                                     save()
                                     withAnimation {
                                         showingTextField.toggle()
@@ -60,7 +60,7 @@ struct valueCellView: View {
                     HStack{
                         Button {
                             if let index = values.firstIndex(where: {$0.local == item.local}){
-                                values[index].values[key] = newValue
+                                values[index][key] = newValue
                                 save()
                                 withAnimation {
                                     showingTextField.toggle()

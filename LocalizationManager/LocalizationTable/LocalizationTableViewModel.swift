@@ -10,8 +10,21 @@ import SwiftUI
 
 
 struct val: Codable, Hashable{
+    var readableLocal: String{
+        local.replacingOccurrences(of: ".lproj", with: "")
+    }
     var local: String
     var values: [String: String]
+    subscript(key: String) -> String {
+        get {
+            return self.values[key] ?? "NO TRANSLATION"
+            // Return an appropriate subscript value here.
+        }
+        set(newValue) {
+            self.values[key] = newValue
+            // Perform a suitable setting action here.
+        }
+    }
 }
 
 class LocalizationTableViewModel: ObservableObject{
@@ -86,7 +99,7 @@ class LocalizationTableViewModel: ObservableObject{
         withAnimation {
             for ind in 0..<values.count{
                 if values[ind].values[newKey] == nil || newKey != ""{
-                    values[ind].values[newKey] = newKey
+                    values[ind][newKey] = newKey
                 }else{
                     return
                 }

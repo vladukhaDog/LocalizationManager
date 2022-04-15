@@ -63,6 +63,7 @@ struct LocalizationTable: View {
             }
             .padding(.bottom)
             VStack(spacing: 0){
+                //строка именующая столбики
                 HStack(spacing: 0){
                     VStack{
                         Text("key").bold()
@@ -73,7 +74,7 @@ struct LocalizationTable: View {
                     .cornerRadius(15)
                     .background(Color.dimGray.padding(.top, 10))
                     .frame(width: widthConst)
-                    
+                    //имена локализаций столбиков
                     ForEach(vm.values, id: \.self){item in
                         Text(item.local).bold()
                             .padding(.horizontal)
@@ -86,7 +87,9 @@ struct LocalizationTable: View {
                 }
                 ScrollView{
                     HStack(spacing: 0){
+                        //Столбик с ключами переводов
                         VStack(spacing: 0){
+                            
                             if vm.values.first != nil{
                                 ForEach(vm.values.first!.values.sorted(by: <), id: \.key){key, value in
                                     ZStack{
@@ -114,8 +117,9 @@ struct LocalizationTable: View {
                                 }
                             }
                         }
-                        
+                        //Перечисление переводов
                         ForEach(vm.values, id: \.self){item in
+                            //Столбик с переводами по ключам
                             VStack(spacing:0){
                                 ForEach(item.values.sorted(by: <), id:\.key){key, value in
                                     valueCellView(values: $vm.values, value: value, item: item, key: key){
