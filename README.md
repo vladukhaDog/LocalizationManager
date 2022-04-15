@@ -8,4 +8,4 @@
 Значения можно менять сразу видя их переводы в других локализациях, повышает скорость оформления локализации в приложении минимум три раза и препятствует не правильному вводу синтаксиса
 
 
-<img src="https://github.com/vladukhaDog/LocalizationManager/preview.png" width="500">
+<img src="https://github.com/vladukhaDog/LocalizationManager/blob/main/preview.png" width="800">
