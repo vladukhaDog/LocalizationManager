@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import Dispatch
 
 struct LocalizationTable_Previews: PreviewProvider {
     
@@ -23,13 +23,29 @@ struct LocalizationTable: View {
     }
     var body: some View {
         VStack{
+            ScrollViewReader{ scrollView in
             HStack{
                 HStack{
                     TextField("Новый ключ", text: $vm.newKey)
                         .textFieldStyle(.plain)
+                        .onSubmit {
+                            vm.add()
+                            vm.searchKey = vm.newKey
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                withAnimation {
+                                    scrollView.scrollTo(vm.newKey, anchor: .center)
+                                }
+                            }
+                        }
                     Button {
                         vm.add()
                         vm.searchKey = vm.newKey
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            withAnimation {
+                                scrollView.scrollTo(vm.newKey, anchor: .center)
+                            }
+                        }
+                        
                     } label: {
                         Image(systemName: "plus.app")
                             .resizable()
@@ -94,7 +110,7 @@ struct LocalizationTable: View {
                                             .frame(width: widthConst, height: heightConst)
                                     }
                                     .background(key == vm.searchKey ? Color.orange.padding(1) : Color.lightSlateBlue.padding(1))
-                                    
+                                    .id(key)
                                 }
                             }
                         }
@@ -115,6 +131,7 @@ struct LocalizationTable: View {
                 }
                 .cornerRadius(15)
             }
+        }
         }
         .padding()
     }
