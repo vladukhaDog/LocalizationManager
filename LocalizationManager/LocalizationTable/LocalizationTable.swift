@@ -23,6 +23,7 @@ struct LocalizationTable: View {
     }
     var body: some View {
         VStack{
+            
             ScrollViewReader{ scrollView in
             HStack{
                 HStack{
@@ -57,6 +58,22 @@ struct LocalizationTable: View {
                 }
                 .padding(8)
                 .frame(width: 200)
+                .background(Color.dimGray)
+                .cornerRadius(10)
+                Button {
+                    vm.commit()
+                } label: {
+                    HStack{
+                        Image(systemName: "icloud.and.arrow.up.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+                        Text("Commit&Push")
+                    }
+                }
+                .foregroundColor(.green)
+                .buttonStyle(.plain)
+                .padding(8)
                 .background(Color.dimGray)
                 .cornerRadius(10)
                 Spacer()

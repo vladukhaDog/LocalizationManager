@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct ContentView: View {
-    
-    
+   
     @AppStorage("lastPath") var projectPath: String = ""
     var body: some View {
         VStack{
-            
             HStack {
                 Button {
                     let panel = NSOpenPanel()

@@ -94,6 +94,39 @@ class LocalizationTableViewModel: ObservableObject{
         }
         
     }
+    func commit(){
+        func safeShell(_ command: String) throws -> String {
+            let task = Process()
+            let pipe = Pipe()
+            
+            task.standardOutput = pipe
+            task.standardError = pipe
+            task.arguments = ["-c", command]
+            task.executableURL = URL(fileURLWithPath: "/bin/zsh") //<--updated
+
+            try task.run() //<--updated
+            
+            let data = pipe.fileHandleForReading.readDataToEndOfFile()
+            let output = String(data: data, encoding: .utf8)!
+            
+            return output
+        }
+
+        // Example usage:
+        do {
+            var command = "cd \(path); "
+            for value in values {
+                let filePath = "git add \(path)/\(value.local)/Localizable.strings; "
+                command += filePath
+            }
+            command += "git commit -m \"new localizable files, commited through LocalizationManager by Vladislav Permyakov\"; git push;"
+            print(command)
+            print(try safeShell(command))
+        }
+        catch {
+            print("\(error)") //handle or silence the error here
+        }
+    }
     
     func add(){
         withAnimation {
