@@ -105,7 +105,7 @@ struct valueCellView: View {
                         }
                     } label: {
                         Image(systemName: "pencil")
-                            .foregroundColor(.white)
+                            .foregroundColor(.primary)
                             .padding(4)
                             .background(Color.dimGray)
                             .cornerRadius(5)
@@ -117,7 +117,7 @@ struct valueCellView: View {
                 //                .transition(.move(edge: .top))
             }
         }
-        .foregroundColor(.white)
+        .foregroundColor(.primary)
         .frame(width: widthConst, height: heightConst)
         .background(Color.darkSlateBlue.padding(1))
         

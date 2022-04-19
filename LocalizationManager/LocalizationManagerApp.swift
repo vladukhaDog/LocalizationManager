@@ -15,7 +15,8 @@ struct LocalizationManagerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .preferredColorScheme(.dark)
+                .background(Color.backGroundcolor)
+//                .preferredColorScheme(.light)
         }
     }
 }

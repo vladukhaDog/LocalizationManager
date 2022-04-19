@@ -29,12 +29,12 @@ struct ContentView: View {
                 } label: {
                     Text("Выбрать папку")
                         .bold()
-                        .foregroundColor(.white)
+                        .foregroundColor(.primary)
                         .padding(10)
                         .frame(width: 200)
-                        .background(Color.darkSlateBlue)
+                        .background(Color.dimGray)
                         .cornerRadius(15)
-    //                    .shadow(color: .black, radius: 5, x: 0, y: 0)
+                        .shadow(color: .gray, radius: 4, x: -1, y: 1)
                 }
                 .buttonStyle(.plain)
                 Text(projectPath)
@@ -42,6 +42,9 @@ struct ContentView: View {
                     .frame(width: 200)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.white)
+                    .padding(5)
+                    .background(Color.blueLight)
+                    .cornerRadius(5)
                 Spacer()
             }
             .padding(.horizontal)
@@ -55,7 +58,7 @@ struct ContentView: View {
                 }
             }
         }
-        .padding()
+        .padding(.vertical)
 //        .background(Color.darkSlateGreen.ignoresSafeArea())
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         

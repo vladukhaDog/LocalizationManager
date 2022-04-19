@@ -29,6 +29,9 @@ struct val: Codable, Hashable{
 
 class LocalizationTableViewModel: ObservableObject{
     let path: String
+    
+    @Published var isGitRepository = false
+    @Published var loadingGitFunctionality = false
     @Published var localizations: [String] = []
     @Published var values: [val] = []
     @Published var newKey = ""
@@ -45,6 +48,7 @@ class LocalizationTableViewModel: ObservableObject{
                 getItems(loc)
             }
         }
+        checkIfGitRepository()
     }
     private func getItems(_ localization: String){
         let folderPath = "\(path)/\(localization)"
@@ -94,37 +98,79 @@ class LocalizationTableViewModel: ObservableObject{
         }
         
     }
-    func commit(){
-        func safeShell(_ command: String) throws -> String {
-            let task = Process()
-            let pipe = Pipe()
-            
-            task.standardOutput = pipe
-            task.standardError = pipe
-            task.arguments = ["-c", command]
-            task.executableURL = URL(fileURLWithPath: "/bin/zsh") //<--updated
+    
+    private func safeShell(_ command: String) throws -> String {
+        let task = Process()
+        let pipe = Pipe()
+        
+        task.standardOutput = pipe
+        task.standardError = pipe
+        task.arguments = ["-c", command]
+        task.executableURL = URL(fileURLWithPath: "/bin/zsh") //<--updated
 
-            try task.run() //<--updated
-            
-            let data = pipe.fileHandleForReading.readDataToEndOfFile()
-            let output = String(data: data, encoding: .utf8)!
-            
-            return output
-        }
-
-        // Example usage:
-        do {
-            var command = "cd \(path); "
-            for value in values {
-                let filePath = "git add \(path)/\(value.local)/Localizable.strings; "
-                command += filePath
+        try task.run() //<--updated
+        
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let output = String(data: data, encoding: .utf8)!
+        
+        return output
+    }
+    
+    func checkIfGitRepository(){
+        DispatchQueue.global(qos: .userInitiated).async{
+            do {
+                var command = "cd \(self.path); "
+                command += "git rev-parse --is-inside-work-tree;"
+                
+                let output = try self.safeShell(command)
+                
+                if output.contains("true"){
+                    DispatchQueue.main.async {
+                        withAnimation {
+                            self.isGitRepository = true
+                        }
+                        
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        withAnimation {
+                            self.isGitRepository = false
+                        }
+                    }
+                }
             }
-            command += "git commit -m \"new localizable files, commited through LocalizationManager by Vladislav Permyakov\"; git push;"
-            print(command)
-            print(try safeShell(command))
+            catch {
+                print("\(error)") //handle or silence the error here
+            }
         }
-        catch {
-            print("\(error)") //handle or silence the error here
+    }
+    
+    
+    func commit(){
+        withAnimation {
+            self.loadingGitFunctionality = true
+        }
+        
+        Task{
+            do {
+                var command = "cd \(path); "
+                for value in values {
+                    let filePath = "git add \(path)/\(value.local)/Localizable.strings; "
+                    command += filePath
+                }
+                command += "git commit -m \"new localizable files, commited through LocalizationManager by Vladislav Permyakov\"; git push;"
+//                print(command)
+                print(try safeShell(command))
+            }
+            catch {
+                print("\(error)") //handle or silence the error here
+            }
+            DispatchQueue.main.async {
+                withAnimation {
+                    self.loadingGitFunctionality = false
+                }
+            }
+            
         }
     }
     

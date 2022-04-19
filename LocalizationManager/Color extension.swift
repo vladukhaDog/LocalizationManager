@@ -15,4 +15,5 @@ extension Color{
     static let darkSlateBlue = Color("darkSlateBlue")
     static let darkSlateBlueComp = Color("darkSlateBlueComp")
     static let dimGray = Color("dimGray")
+    static let backGroundcolor = Color("background")
 }
