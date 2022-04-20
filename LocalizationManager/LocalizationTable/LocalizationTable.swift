@@ -29,27 +29,7 @@ struct LocalizationTable: View {
                 
                 VStack(spacing: 0){
                     //строка именующая столбики
-                    HStack(spacing: 0){
-                        VStack{
-                            Text("key").bold()
-                        }
-                        .padding(.horizontal)
-                        .foregroundColor(Color.primary)
-                        .background(Color.dimGray)
-                        .cornerRadius(15)
-                        .background(Color.dimGray.padding(.top, 10))
-                        .frame(width: widthConst)
-                        //имена локализаций столбиков
-                        ForEach(vm.values, id: \.self){item in
-                            Text(item.local).bold()
-                                .padding(.horizontal)
-                                .foregroundColor(Color.primary)
-                                .background(Color.dimGray)
-                                .cornerRadius(15)
-                                .background(Color.dimGray.padding(.top, 10))
-                                .frame(width: widthConst)
-                        }
-                    }
+                    ColumnNames(vm: vm)
                     ScrollView{
                         HStack(spacing: 0){
                             //Столбик с ключами переводов
@@ -57,28 +37,7 @@ struct LocalizationTable: View {
                                 
                                 if vm.values.first != nil{
                                     ForEach(vm.values.first!.values.sorted(by: <), id: \.key){key, value in
-                                        ZStack{
-                                            HStack{
-                                                Button {
-                                                    vm.remove(key)
-                                                } label: {
-                                                    Image(systemName: "trash")
-                                                        .resizable()
-                                                        .scaledToFit()
-                                                        .foregroundColor(.red)
-                                                }
-                                                .buttonStyle(.plain)
-                                                .frame(width: 20, height: 20)
-                                                Spacer()
-                                            }
-                                            .padding(.horizontal)
-                                            Text(key)
-                                                .foregroundColor(.primary)
-                                                .bold()
-                                                .frame(width: widthConst, height: heightConst)
-                                        }
-                                        .background(key.contains(vm.searchKey) ? Color.orange.padding(1) : Color.lightSlateBlue.padding(1))
-                                        .id(key)
+                                        KeyCellView(vm: vm, key: key, value: value)
                                     }
                                 }
                             }
