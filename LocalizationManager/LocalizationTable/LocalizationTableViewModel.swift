@@ -159,7 +159,6 @@ class LocalizationTableViewModel: ObservableObject{
                     command += filePath
                 }
                 command += "git commit -m \"new localizable files, commited through LocalizationManager by Vladislav Permyakov\"; git push;"
-//                print(command)
                 print(try safeShell(command))
             }
             catch {
@@ -172,6 +171,34 @@ class LocalizationTableViewModel: ObservableObject{
             }
             
         }
+    }
+    
+    func importCSV(_ path: String){
+        do{
+            var tempVal = [val]()
+            //read file lines
+            var lines = try String(contentsOfFile: path).components(separatedBy: "\n")
+            //check if there is > 0 lines and first line has key title
+            guard let firstLine = lines.first?.components(separatedBy: ","), firstLine[0] == "key" else{return}
+            for i in 1..<firstLine.count{
+                //создаём объект на каждую локализацию найденную в файле
+                tempVal.append(val(local: "\(firstLine[i]).lproj", values: [:]))
+            }
+            //removing first line containing titles and language names
+            lines.removeFirst()
+            //going through each phrase/word
+            lines.forEach { line in
+                let components = line.components(separatedBy: ",")
+                //checking if there is right amount of elements (key + translations)
+                guard components.count == tempVal.count+1 else {return}
+                //adding each translation to array
+                for i in 1..<components.count{
+                    tempVal[i-1][components[0]] = components[i]
+                }
+            }
+            values = tempVal
+            saveFiles()
+        }catch{}
     }
     
     func add(){

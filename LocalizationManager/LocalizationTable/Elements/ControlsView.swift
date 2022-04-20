@@ -13,7 +13,25 @@ struct ControlsView: View {
     var body: some View {
         HStack {
             HStack{
-                
+                //кнопка импорта
+                Button {
+                    let panel = NSOpenPanel()
+                    panel.allowsMultipleSelection = false
+                    panel.canChooseDirectories = false
+                    panel.canChooseFiles = true
+                    panel.allowedContentTypes = [.text]
+                    if panel.runModal() == .OK,  panel.url?.absoluteString != nil{
+                        vm.importCSV((panel.url?.path)!)
+                    }
+                } label: {
+                    Label("Импортировать csv", systemImage: "square.and.arrow.down.fill")
+                        .foregroundColor(.primary)
+                        .padding(8)
+                        .background(Color.dimGray)
+                        .cornerRadius(10)
+                        .shadow(color: .gray, radius: 4, x: -1.5, y: 1.5)
+                }
+                .buttonStyle(.plain)
                 //Кнопка для комита и
                 Button {
                     vm.commit()

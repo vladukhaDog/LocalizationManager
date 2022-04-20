@@ -47,6 +47,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		611019D828102B58009B7096 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				611019D228102401009B7096 /* ControlsView.swift */,
+				611019D428102626009B7096 /* ColumnNames.swift */,
+				611019D62810267C009B7096 /* KeyCellView.swift */,
+				61BC60D928007FC20024F9E2 /* valueCellView.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
 		61BC60B4280061620024F9E2 = {
 			isa = PBXGroup;
 			children = (
@@ -98,10 +109,7 @@
 			children = (
 				61BC60D1280066030024F9E2 /* LocalizationTable.swift */,
 				61BC60D4280066680024F9E2 /* LocalizationTableViewModel.swift */,
-				611019D228102401009B7096 /* ControlsView.swift */,
-				611019D428102626009B7096 /* ColumnNames.swift */,
-				611019D62810267C009B7096 /* KeyCellView.swift */,
-				61BC60D928007FC20024F9E2 /* valueCellView.swift */,
+				611019D828102B58009B7096 /* Elements */,
 			);
 			path = LocalizationTable;
 			sourceTree = "<group>";
